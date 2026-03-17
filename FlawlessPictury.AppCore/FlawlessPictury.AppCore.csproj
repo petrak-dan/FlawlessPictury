@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{976EE69D-E1EB-44DE-94F2-01CEB7D0D351}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FlawlessPictury.AppCore</RootNamespace>
+    <AssemblyName>FlawlessPictury.AppCore</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\Error.cs" />
+    <Compile Include="Common\Result.cs" />
+    <Compile Include="CrossCutting\IClock.cs" />
+    <Compile Include="CrossCutting\IFileStager.cs" />
+    <Compile Include="CrossCutting\ILogger.cs" />
+    <Compile Include="CrossCutting\ProcessingLogScope.cs" />
+    <Compile Include="CrossCutting\IOutputCommitter.cs" />
+    <Compile Include="CrossCutting\IProcessRunner.cs" />
+    <Compile Include="CrossCutting\IUiDispatcher.cs" />
+    <Compile Include="CrossCutting\LogLevel.cs" />
+    <Compile Include="CrossCutting\ProcessExecutionOptions.cs" />
+    <Compile Include="CrossCutting\ProcessExecutionResult.cs" />
+    <Compile Include="Plugins\Artifacts\Artifact.cs" />
+    <Compile Include="Plugins\Artifacts\MetadataBag.cs" />
+    <Compile Include="Plugins\Artifacts\RepresentationKind.cs" />
+    <Compile Include="Plugins\Capabilities\CapabilityDescriptor.cs" />
+    <Compile Include="Plugins\Capabilities\CapabilityRole.cs" />
+    <Compile Include="Plugins\Capabilities\MediaTypeGuesser.cs" />
+    <Compile Include="Plugins\Capabilities\MediaTypeMatcher.cs" />
+    <Compile Include="Plugins\Capabilities\OperationEffect.cs" />
+    <Compile Include="Plugins\Capabilities\OperationKind.cs" />
+    <Compile Include="Plugins\Execution\IStep.cs" />
+    <Compile Include="Plugins\Execution\IStepExecutionHost.cs" />
+    <Compile Include="Plugins\Execution\StepContext.cs" />
+    <Compile Include="Plugins\Execution\StepInput.cs" />
+    <Compile Include="Plugins\Execution\StepOutput.cs" />
+    <Compile Include="Plugins\Execution\StepProgress.cs" />
+    <Compile Include="Plugins\Execution\StepResumeInput.cs" />
+    <Compile Include="Plugins\Execution\WorkflowMode.cs" />
+    <Compile Include="Plugins\View\ImageViewData.cs" />
+    <Compile Include="Plugins\View\PropertyEntry.cs" />
+    <Compile Include="Plugins\Interaction\HeadlessBehavior.cs" />
+    <Compile Include="Plugins\Interaction\InteractionPurpose.cs" />
+    <Compile Include="Plugins\Interaction\InteractionRequest.cs" />
+    <Compile Include="Plugins\Interaction\InteractionResponse.cs" />
+    <Compile Include="Plugins\IPlugin.cs" />
+    <Compile Include="Plugins\IPluginCatalog.cs" />
+    <Compile Include="Plugins\Parameters\ParameterDefinition.cs" />
+    <Compile Include="Plugins\Parameters\ParameterSchema.cs" />
+    <Compile Include="Plugins\Parameters\ParameterType.cs" />
+    <Compile Include="Plugins\Parameters\ParameterValues.cs" />
+    <Compile Include="Plugins\Pipeline\PipelineDefinition.cs" />
+    <Compile Include="Plugins\Pipeline\PipelineExecutionResult.cs" />
+    <Compile Include="Plugins\Pipeline\PipelineExecutor.cs" />
+    <Compile Include="Plugins\Pipeline\PipelineProgress.cs" />
+    <Compile Include="Plugins\Pipeline\PipelineStepDefinition.cs" />
+    <Compile Include="Plugins\Pipeline\PipelineValidationResult.cs" />
+    <Compile Include="Plugins\Pipeline\PipelineValidator.cs" />
+    <Compile Include="Plugins\Pipeline\ReferenceAnchorKind.cs" />
+    <Compile Include="Plugins\PluginCatalog.cs" />
+    <Compile Include="Plugins\PluginMetadata.cs" />
+    <Compile Include="Presets\CapabilityReference.cs" />
+    <Compile Include="Presets\IPresetRepository.cs" />
+    <Compile Include="Presets\OutputDirectoryMode.cs" />
+    <Compile Include="Presets\OutputPolicyDefinition.cs" />
+    <Compile Include="Presets\PresetDefinition.cs" />
+    <Compile Include="Stats\IRunStatsSink.cs" />
+    <Compile Include="Stats\StatsEvent.cs" />
+    <Compile Include="Stats\StatsEventKind.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FlawlessPictury.Domain\FlawlessPictury.Domain.csproj">
+      <Project>{57ee4191-0a50-434b-845c-c0bbaa6e5746}</Project>
+      <Name>FlawlessPictury.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

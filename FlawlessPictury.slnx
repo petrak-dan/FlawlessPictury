@@ -1,0 +1,11 @@
+﻿<Solution>
+  <Project Path="FlawlessPictury.AppCore/FlawlessPictury.AppCore.csproj" Id="976ee69d-e1eb-44de-94f2-01ceb7d0d351" />
+  <Project Path="FlawlessPictury.Domain/FlawlessPictury.Domain.csproj" Id="57ee4191-0a50-434b-845c-c0bbaa6e5746" />
+  <Project Path="FlawlessPictury.Infrastructure/FlawlessPictury.Infrastructure.csproj" Id="25308964-7cf1-44ed-938f-426ddf97c41c" />
+  <Project Path="FlawlessPictury.Plugins.GdiPlus/FlawlessPictury.Plugins.GdiPlus.csproj" Id="fa88ca77-1529-456f-b6c1-fa7a123eb306" />
+  <Project Path="FlawlessPictury.Plugins.ImageMagick/FlawlessPictury.Plugins.ImageMagick.csproj" Id="3656646b-0ace-4677-843e-74dddf9f78ee" />
+  <Project Path="FlawlessPictury.Plugins.Optimizer/FlawlessPictury.Plugins.Optimizer.csproj" Id="46830743-3306-4a1d-88e3-3d13cede5410" />
+  <Project Path="FlawlessPictury.Plugins.ExifTool/FlawlessPictury.Plugins.ExifTool.csproj" Id="7e4f87b5-4d24-4f53-a4d2-cb9ad4ee0a11" />
+  <Project Path="FlawlessPictury.Plugins.Sample/FlawlessPictury.Plugins.Sample.csproj" Id="98dcb8e0-7301-4e61-ad4b-73b48bc3d5d9" />
+  <Project Path="FlawlessPictury.Presentation.WinForms/FlawlessPictury.Presentation.WinForms.csproj" Id="90aa1a1c-1765-4141-aa74-3b66de2ddb06" />
+</Solution>
