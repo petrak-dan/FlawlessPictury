@@ -1,0 +1,61 @@
+{
+  "PresetId": "image.im.optimize.metric.ssimDist.jpg.max0p02",
+  "DisplayName": "Visually lossless JPEG for photography",
+  "Description": "Finds the smallest JPEG quality that keeps visual changes effectively invisible in photographic images. Original metadata is preserved.",
+  "OutputPolicy": {
+    "DirectoryMode": "RelativeToInput",
+    "DirectoryPath": ".\\Flawless",
+    "PreserveSourceFileTimes": true
+  },
+  "PreviewProvider": {
+    "PluginId": "imagemagick",
+    "CapabilityId": "view_image"
+  },
+  "PropertiesProviders": [
+    {
+      "PluginId": "exiftool",
+      "CapabilityId": "read_metadata"
+    }
+  ],
+  "Pipeline": {
+    "Name": "Optimize by metric (SSIM) via Optimizer",
+    "Steps": [
+      {
+        "PluginId": "optimizer",
+        "CapabilityId": "search_parameter",
+        "DisplayName": "Search Parameter Optimizer [search_parameter]",
+        "Parameters": {
+          "encoder.pluginId": "imagemagick",
+          "encoder.capabilityId": "convert",
+          "metric.pluginId": "imagemagick",
+          "metric.capabilityId": "compare_metric",
+          "search.parameterKey": "quality",
+          "search.min": "60",
+          "search.max": "98",
+          "search.maxTries": "12",
+          "search.strategy": "BinarySearch",
+          "constraint.metricTarget": "0.02",
+          "constraint.metricDirection": "LowerIsBetter",
+          "constraint.metricKey": "metric",
+          "objective.requireSmallerThanInput": "true",
+          "fallback.keepOriginalOnConstraintFailure": "true",
+          "encoder.param.format": "jpg",
+          "encoder.param.outputNamePattern": "{name}.jpg",
+          "encoder.param.autoOrient": "false",
+          "encoder.param.strip": "true",
+          "encoder.param.interlace": "Plane",
+          "metric.param.metric": "SSIM",
+          "metric.param.metricKey": "metric"
+        }
+      },
+      {
+        "PluginId": "exiftool",
+        "CapabilityId": "copy_metadata",
+        "DisplayName": "Copy Metadata [copy_metadata]",
+        "Parameters": {
+          "excludeOrientationTag": "false"
+        }
+      }
+    ]
+  }
+}

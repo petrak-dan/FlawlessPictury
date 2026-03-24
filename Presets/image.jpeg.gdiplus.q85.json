@@ -1,0 +1,46 @@
+{
+  "PresetId": "image.jpeg.gdiplus.q85.providers",
+  "DisplayName": "JPEG conversion (quality 85)",
+  "Description": "Converts the input image to JPEG at quality 85 using GDI+, then preserves metadata from the original file.",
+  "OutputPolicy": {
+    "DirectoryMode": "RelativeToInput",
+    "DirectoryPath": ".\\Flawless",
+    "PreserveSourceFileTimes": true
+  },
+  "PreviewProvider": {
+    "PluginId": "gdiplus",
+    "CapabilityId": "view_image"
+  },
+  "PropertiesProviders": [
+    {
+      "PluginId": "gdiplus",
+      "CapabilityId": "read_image_properties"
+    },
+    {
+      "PluginId": "exiftool",
+      "CapabilityId": "read_metadata"
+    }
+  ],
+  "Pipeline": {
+    "Name": "JPEG Encode (GDI+)",
+    "Steps": [
+      {
+        "PluginId": "gdiplus",
+        "CapabilityId": "encode_jpeg",
+        "DisplayName": "Encode JPEG [encode_jpeg]",
+        "Parameters": {
+          "quality": "85",
+          "suffix": "_q85"
+        }
+      },
+      {
+        "PluginId": "exiftool",
+        "CapabilityId": "copy_metadata",
+        "DisplayName": "Copy Metadata [copy_metadata]",
+        "Parameters": {
+          "excludeOrientationTag": "false"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "PresetId": "sample.copy.safe.providers",
+  "DisplayName": "Copy only",
+  "Description": "Copies the original file to the output folder without re-encoding. Useful for testing output flow, preview, and properties.",
+  "OutputPolicy": {
+    "DirectoryMode": "RelativeToInput",
+    "DirectoryPath": ".\\Flawless",
+    "PreserveSourceFileTimes": true
+  },
+  "PreviewProvider": {
+    "PluginId": "gdiplus",
+    "CapabilityId": "view_image"
+  },
+  "PropertiesProviders": [
+    {
+      "PluginId": "gdiplus",
+      "CapabilityId": "read_image_properties"
+    },
+    {
+      "PluginId": "exiftool",
+      "CapabilityId": "read_metadata"
+    }
+  ],
+  "Pipeline": {
+    "Name": "Copy Only",
+    "Steps": [
+      {
+        "PluginId": "sample",
+        "CapabilityId": "copy_file",
+        "DisplayName": "Copy File [copy_file]",
+        "Parameters": {
+          "suffix": "_out",
+          "extension": ""
+        }
+      }
+    ]
+  }
+}
